@@ -11,7 +11,7 @@ public class BinaryTree {
 	 * http://www.fusu.us/2013/06/p2-lowest-common-ancestor-in-binary-tree.html
 	 * http://stackoverflow.com/questions/3540622/lowest-common-ancestor-of-binary-treenot-binary-search-tree
 	 */
-	public static TreeNode findLCAinBT(TreeNode root, int a, int b){
+	public static TreeNode<Integer> findLCAinBT(TreeNode<Integer> root, int a, int b){
 		if(root == null) return null;
 		
 		if(root.val==a||root.val==b)
@@ -40,7 +40,7 @@ public class BinaryTree {
 //		}
 //		return res;
 //	}
-	public static boolean find(TreeNode root, int k){
+	public static boolean find(TreeNode<Integer> root, int k){
 		if(root==null) return false;
 		if(root.val==k||find(root.left,k)||find(root.right,k)) return true;
 		
@@ -97,15 +97,17 @@ public class BinaryTree {
 		root.right = new TreeNode(2);
 		root.right.right = new TreeNode(9);
 		root.right.right.left = new TreeNode(4);
+		root.right.right.right = new TreeNode(8);
 	
+		BinayTreePrinter.printNode(root);
 		//TreeNode res = findLCAinBT(root,2,10);
 		//System.out.println(res.val);
 		
-		TreeNode res = findLCAinBT2(root,2,6);
-		if(res!=null)
-			System.out.println(res.val);
-		else
-			System.out.println("it is null");
+//		TreeNode res = findLCAinBT2(root,2,6);
+//		if(res!=null)
+//			System.out.println(res.val);
+//		else
+//			System.out.println("it is null");
 //		if(search(root,7)){
 //			System.out.println("done");
 //		}
