@@ -1,5 +1,7 @@
 package datastructure;
 
+
+
 // Definition for singly-linked list.
  public class ListNode {
      public int val;
@@ -8,4 +10,14 @@ package datastructure;
          val = x;
          next = null;
      }
+     
+     public ListNode append(int val){
+    	 ListNode end = new ListNode(val);
+    	 ListNode n = this;
+ 		while(n.next != null){
+ 			n = n.next;
+ 		}
+ 		n.next = end;
+ 		return this;
+ 	}
  }
