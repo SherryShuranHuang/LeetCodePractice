@@ -9,7 +9,7 @@ public class Client {
 	PrintWriter out;
 	
 	public static final String IP_ADDR = "localhost";
-	public static final int PORT = 12345;
+	public static final int PORT = 12349;
 
 	public Client() throws IOException
 	{
@@ -44,7 +44,7 @@ public class Client {
 		catch (UnknownHostException e){
 			System.err.println("Don't know about host: hostname");
 		}catch (IOException e) {
-            System.err.println("Couldn't get I/O for the connection to: hostname");
+            System.err.println("Couldn't get I/O for the connection to: hostname  " + e.getMessage());
         }finally {  
             if (socket != null) {  
                 try {  
