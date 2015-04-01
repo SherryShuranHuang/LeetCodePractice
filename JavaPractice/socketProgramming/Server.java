@@ -16,7 +16,7 @@ import java.net.Socket;
  *
  */
 public class Server {
-	public static final int PORT = 12349;
+	public static final int PORT = 12323;
 	static ServerSocket serverSocket;
 	static Socket client;
 	public static void init() {

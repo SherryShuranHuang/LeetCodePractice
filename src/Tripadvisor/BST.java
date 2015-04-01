@@ -58,6 +58,7 @@ public class BST {
 		TreeNode res = findLCA(root,18,19);
 		System.out.println(res.val);
 		
+		System.out.println(res.getClass().getSimpleName());
 	}
 
 }

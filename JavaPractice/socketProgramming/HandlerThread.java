@@ -19,17 +19,17 @@ public class HandlerThread implements Runnable{
 		try {    
 			// 读取客户端数据    
 			DataInputStream input = new DataInputStream(client.getInputStream());  
+			// 向客户端回复信息    
+			//DataOutputStream out = new DataOutputStream(client.getOutputStream());    
+			PrintStream out = new PrintStream(client.getOutputStream());  
+			System.out.print("请输入:\t");    
+			// 发送键盘输入的一行    
+			//String s = new BufferedReader(new InputStreamReader(System.in)).readLine();   
 			String clientInputStr = input.readUTF();//这里要注意和客户端输出流的写方法对应,否则会抛 EOFException  
 			// 处理客户端数据    
 			System.out.println("客户端发过来的内容:" + clientInputStr);    
-			// 向客户端回复信息    
-			DataOutputStream out = new DataOutputStream(client.getOutputStream());    
-			//PrintStream out = new PrintStream(client.getOutputStream());  
-			System.out.print("请输入:\t");    
-			// 发送键盘输入的一行    
-			String s = new BufferedReader(new InputStreamReader(System.in)).readLine();    
-			out.writeUTF(s);   
-			//out.println("Your input is"+clientInputStr);
+			//out.writeUTF(s);   
+			out.println("Your input is"+clientInputStr);
 
 			out.close();    
 			input.close();    

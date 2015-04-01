@@ -9,7 +9,7 @@ public class Client {
 	PrintWriter out;
 	
 	public static final String IP_ADDR = "localhost";
-	public static final int PORT = 12349;
+	public static final int PORT = 12323;
 
 	public Client() throws IOException
 	{
@@ -25,17 +25,17 @@ public class Client {
             String str = new BufferedReader(new InputStreamReader(System.in)).readLine();    
             out.writeUTF(str); 
             
-            String ret = input.readUTF();     
-            System.out.println("服务器端返回过来的是: " + ret);    
+//            String ret = input.readUTF();     
+//            System.out.println("服务器端返回过来的是: " + ret);    
             
             // 如接收到 "OK" 则断开连接    
-            if ("OK".equals(ret)) {    
-                System.out.println("客户端将关闭连接");    
-                //Thread.sleep(500);    
-                //break;    
-            }else{
-            	System.out.println("客户端连接");  
-            }
+//            if ("OK".equals(ret)) {    
+//                System.out.println("客户端将关闭连接");    
+//                //Thread.sleep(500);    
+//                //break;    
+//            }else{
+//            	System.out.println("客户端连接");  
+//            }
               
             out.close();  
             input.close();  
