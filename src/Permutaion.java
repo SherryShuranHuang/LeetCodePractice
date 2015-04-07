@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
-
+//--------------------------takes O(n!) because there is n! permutations------------
 public class Permutaion {
 	public static ArrayList<ArrayList<Integer>> permute(int[] num) {  //iterative
 	    ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();  
@@ -41,8 +41,7 @@ public class Permutaion {
         que.offer(new LinkedList(item));
         
         for(int i=1;i<num.length;i++){
-           //LinkedList<Integer> item = que.poll();
-        	
+           //LinkedList<Integer> item = que.poll();      	
         	int size = que.size();
            for(int j=0;j<size;j++){
         	   item = que.poll();
@@ -83,7 +82,7 @@ public class Permutaion {
 			}
 		}
 	}
-	
+
 //	public static void permute(String s, String r ){
 //		
 //		if(r.length()==0){

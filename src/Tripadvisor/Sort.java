@@ -27,7 +27,7 @@ public class Sort {
 	}
 
 	/**
-	 * Selection sort each time, search for the current minimum and swap
+	 * Selection sort: each time, search for the current minimum and swap
 	 * 
 	 * @param num
 	 */
@@ -101,44 +101,51 @@ public class Sort {
 	 * divide and conquer  guaranteed O(n*log(n)) efficiency
 	 * @param num
 	 */
-	public static void mergeSort(int[] num){
-		if(num==null||num.length==0) return;
-		helpermerge(0,num.length-1,num, new int[num.length]);
+
+	public static void mergeSort(Comparable[] a)
+	{
+		Comparable[] tmp = new Comparable[a.length];
+		mergeSort(a, tmp,  0,  a.length - 1);
 	}
-	private static void helpermerge(int start, int end, int[] num, int[] helper){
-		if(start<end){
-			int m = start+(end-start)/2;
-			helpermerge(start,m,num,helper);
-			helpermerge(m+1,end,num,helper);
-			mergepart(start, m,end, num, helper);
-		}
-	}
-	private static void mergepart(int l,int m, int r, int[] num, int[] helper){
-		for(int i=l;i<=r;i++){
-			helper[i]=num[i];
-		}
-		
-		int i=l,j=m+1,k=l;
-		
-		while(i<m && j<=r){
-			if(helper[i]<=helper[j]){
-				num[k]=helper[i];
-				i++;
-			}else{
-				num[k]=helper[j];
-				j++;
-			}
-			k++;
-		}
-		while(i<=m){
-			num[k]=helper[i];
-			k++;
-			i++;
+
+
+	private static void mergeSort(Comparable [ ] a, Comparable [ ] tmp, int left, int right)
+	{
+		if( left < right )
+		{
+			int center = (left + right) / 2;
+			mergeSort(a, tmp, left, center);
+			mergeSort(a, tmp, center + 1, right);
+			merge(a, tmp, left, center + 1, right);
 		}
 	}
+
+    private static void merge(Comparable[ ] a, Comparable[ ] tmp, int left, int right, int rightEnd )
+    {
+        int leftEnd = right - 1;
+        int k = left;
+        int num = rightEnd - left + 1;
+
+        while(left <= leftEnd && right <= rightEnd)
+            if(a[left].compareTo(a[right]) <= 0)
+                tmp[k++] = a[left++];
+            else
+                tmp[k++] = a[right++];
+
+        while(left <= leftEnd)    // Copy rest of first half
+            tmp[k++] = a[left++];
+
+        while(right <= rightEnd)  // Copy rest of right half
+            tmp[k++] = a[right++];
+
+        // Copy tmp back
+        for(int i = 0; i < num; i++, rightEnd--)
+            a[rightEnd] = tmp[rightEnd];
+    }
 	public static void main(String[] args) {
-		int[] input = { 4, 2, 9, 9, 23, 12, 34, 0, 1,36 };
-		bubbleSort(input);
+		Integer[] input = { 4, 2, 9, 9, 23, 12, 34, 0, 1,36 };
+		int[] input2 = { 4, 2, 9, 9, 23, 12, 34, 0, 1,36 };
+		bubbleSort(input2);
 		mergeSort(input);
 		for (int i : input) {
 			System.out.print(i);
