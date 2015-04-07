@@ -7,38 +7,27 @@ package EPIC;
  * are in the password, print all possible passwords.
  */
 public class WellOrderedStr {
-	public void numOfValidPassword(String str, int passLength){
-		if(str==null||str.length()<passLength) {
-			System.out.println("ERROR: The length of the string is less than "+ passLength);
+	public void getValidPassword(int passLength){
+		if(passLength<1) {
+			System.out.println("ERROR: invalid password length!");
 			return;
 		}
-		for(int i =0; i<str.length();i++){
-			for(int j=i;j<=passLength;j++){
-				
-			}
-		}
-		
-		
-		
-		
+		getValidPassword(passLength,0,"");
 	}
-	private boolean isBefore(char n1, char n2){
-		int order1 = 0;
-		int order2 = 0;
-		if(n1>='a'&& n1<='z') order1 = n1-'a';
-		else if(n1>='A'&&n1<='Z') order1 = n1-'A';
-			
-		if(n2>='a'&&n2<='z') order2 = n2-'a';
-		else if(n2>='A'&&n2<='Z') order2 = n2-'A';
-		
-		if(order1<=order2){
-			return true;
+	private void getValidPassword(int n, int start, String pre){
+		if(n==0){
+			System.out.println(pre);
+			return;
 		}
-		return false;
+		for(int i=start;i<26;i++){
+			getValidPassword(n-1, i+1,pre+(char)('a'+i));
+			getValidPassword(n-1, i+1,pre+(char)('A'+i));
+		}
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		WellOrderedStr test = new WellOrderedStr();
+		test.getValidPassword(3);
 	}
 
 }
