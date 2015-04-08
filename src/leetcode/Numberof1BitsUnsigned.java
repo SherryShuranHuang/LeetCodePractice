@@ -9,7 +9,7 @@ public class Numberof1BitsUnsigned {
             res+= n&1;
             n=n>>1;
         }
-        return res;
+        //return res;
     }
 
 	public static void main(String[] args) {
