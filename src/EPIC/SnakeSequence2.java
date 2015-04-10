@@ -15,6 +15,9 @@ In this grid, (3, 2, 1, 0, 1) is a snake sequence.
 Given a grid, find the longest snake sequences and their lengths 
 (so there can be multiple snake sequences with the maximum length).
 */
+/**
+ * The shorter version of SnakeSequence
+ */
 public class SnakeSequence2 {
 
 	public static void main(String[] args){
