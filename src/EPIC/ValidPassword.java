@@ -11,7 +11,7 @@ expected 18684 (you need to take care as when u enter18684 and
 
 public class ValidPassword {
 	public static void main(String[] args){
-		if (checkValidPW("164", "1868488")) {// I am not sure about this situation
+		if (checkValidPW("1648", "18684")) {// I am not sure about this situation
 			System.out.println("Valid!");
 		} else {
 			System.out.println("Failed!");
