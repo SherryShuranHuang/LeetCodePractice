@@ -18,16 +18,23 @@ public class ValidPassword {
 		}
 	}
 	public static boolean checkValidPW(String input, String expected){
-		char faultKey='8';
-		int i=0;
-		int j=0;
-		for(;i<input.length()&&j<expected.length();j++){
-			if(input.charAt(i)!=expected.charAt(j)){
-				if(faultKey!=expected.charAt(j))
+		char faultKey='a';
+		int i;
+		int j;
+		for(i=0,j=0;i<input.length()&&j<expected.length();i++,j++){
+			if(input.charAt(i)==expected.charAt(j)){
+				if(faultKey!='a'&& input.charAt(i)==faultKey)
 					return false;
-				continue;
+			}else{
+				if(faultKey=='a')
+					faultKey=expected.charAt(j);
+				else{
+					if(faultKey!=expected.charAt(j))
+						return false;
+				}
+				i--;
 			}
-			i++;
+				
 		}
 		while(j<expected.length()&&expected.charAt(j)==faultKey){
 			j++;
