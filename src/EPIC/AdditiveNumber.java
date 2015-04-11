@@ -30,8 +30,10 @@ public class AdditiveNumber {
 			for (int j = i + 1; j < s.length(); j++) {
 				String s1 = s.substring(0, i);
 				String s2 = s.substring(i, j);
+				/* if there is rule saying: The first two numbers are the same*/
 				if(!s1.equals(s2)) 
 					continue;
+				/*-------------------------*/
 				int part1 = Integer.parseInt(s1);
 				int part2 = Integer.parseInt(s2);
 				int index = j;
