@@ -11,12 +11,21 @@ public class FindWords {
 	public static boolean wordSearch(String word, char[][] board){
 		if(word==null||board==null||board.length==0||board[0].length==0) return false;
 		if(word.length()==0) return true;
+		boolean res = true;
 		for(int i=0;i<board.length;i++){
 			for(int j=0;j<board[0].length;j++){
 				if(board[i][j]==word.charAt(0)){
-					boolean res = findVertical(word,board,i+1,j,1)
-								||findHorizontal(word,board,i,j+1,1)
-								||findDiagnal(word,board,i+1,j+1,1);
+//					res = findVertical(word,board,i+1,j,1)
+//								||findHorizontal(word,board,i,j+1,1)
+//								||findDiagnal(word,board,i+1,j+1,1);
+					for(int k=1;k<word.length();k++){
+						if(word.charAt(k)!=board[i+k][j] 
+						  && word.charAt(k)!=board[i][j+k]
+						  && word.charAt(k)!=board[i+k][j+k]){
+							res = false;
+							break;
+						}
+					}
 					if(res){
 						return true;
 					}
@@ -25,24 +34,24 @@ public class FindWords {
 		}
 		return false;
 	}
-	private static boolean findVertical(String word, char[][] board,int i, int j, int index){
-		if(index==word.length()) return true;
-		if(i>=board.length ||j>=board[0].length || word.charAt(index)!= board[i][j])
-			return false;
-		return findVertical(word, board,i+1,j,index+1);
-	}
-	private static boolean findHorizontal(String word, char[][] board,int i, int j, int index){
-		if(index==word.length()) return true;
-		if(i>=board.length ||j>=board[0].length || word.charAt(index)!= board[i][j])
-			return false;
-		return findHorizontal(word, board,i,j+1,index+1);
-	}
-	private static boolean findDiagnal(String word, char[][] board,int i, int j, int index){
-		if(index==word.length()) return true;
-		if(i>=board.length ||j>=board[0].length || word.charAt(index)!= board[i][j])
-			return false;
-		return findDiagnal(word, board,i+1,j+1,index+1);
-	}
+//	private static boolean findVertical(String word, char[][] board,int i, int j, int index){
+//		if(index==word.length()) return true;
+//		if(i>=board.length ||j>=board[0].length || word.charAt(index)!= board[i][j])
+//			return false;
+//		return findVertical(word, board,i+1,j,index+1);
+//	}
+//	private static boolean findHorizontal(String word, char[][] board,int i, int j, int index){
+//		if(index==word.length()) return true;
+//		if(i>=board.length ||j>=board[0].length || word.charAt(index)!= board[i][j])
+//			return false;
+//		return findHorizontal(word, board,i,j+1,index+1);
+//	}
+//	private static boolean findDiagnal(String word, char[][] board,int i, int j, int index){
+//		if(index==word.length()) return true;
+//		if(i>=board.length ||j>=board[0].length || word.charAt(index)!= board[i][j])
+//			return false;
+//		return findDiagnal(word, board,i+1,j+1,index+1);
+//	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
