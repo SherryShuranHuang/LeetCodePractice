@@ -60,14 +60,14 @@ public class SnakeSequence2 {
 		
 		if (r != rows) {// if we can go to the below
 			if (Math.abs(mat[r][c] - mat[r + 1][c]) == 1) {
-				max = helper(mat, res, path, r + 1, c, count + 1, max);
+				max = Math.max(max, helper(mat, res, path, r + 1, c, count + 1, max));
 				path.remove(path.size() - 1);
 			}
 		}
 
 		if (c != cols) {// if we can go to the right
 			if (Math.abs(mat[r][c] - mat[r][c + 1]) == 1) {
-				max = helper(mat, res, path, r, c + 1, count + 1, max);
+				max = Math.max(max,helper(mat, res, path, r, c + 1, count + 1, max));
 				path.remove(path.size() - 1);
 			}
 		}
