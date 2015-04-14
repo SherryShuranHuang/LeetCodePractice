@@ -16,7 +16,7 @@ public class ContinuousAlphabets {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(printContinuous("abcdefljdflsjflmnopflsjflasjftuvwxyz "));
+		System.out.println(printContinuous("abcdefljdflsjflmnopflsjflasjftuvwxyz"));
 		System.out.println(printContinuous("AbcDefljdflsjflmnopflsjflasjftuvWxYz"));
 	}
 	
@@ -42,7 +42,8 @@ public class ContinuousAlphabets {
 	public static boolean isValid(char c1, char c2){
 		int range = 'a'-'A';//32
 		//ab,AB,       Ab,               aB,
-		if(c2-c1==1 || c2-c1==range+1 ||c1-c2==range-1)
+		//if(c2-c1==1 || c2-c1==range+1 ||c1-c2==range-1)
+		if(Character.toLowerCase(c2)-Character.toLowerCase(c1)==1)
 			return true;
 		return false;
 	}

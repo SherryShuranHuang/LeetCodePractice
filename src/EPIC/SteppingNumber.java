@@ -16,7 +16,7 @@ public class SteppingNumber {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		SteppingNumber test = new SteppingNumber();
-		test.steppingNum(100, 9000);
+		test.steppingNum(100, 10000);
 	}
 	public void steppingNum(int s, int e){
 		//List<Integer> res  = new ArrayList<Integer>();
@@ -24,13 +24,13 @@ public class SteppingNumber {
 		String ss = String.valueOf(s);
 		String ee = String.valueOf(e);
 		for(int i=ss.length();i<=ee.length();i++){
-			for(int j=1;j<2;j++){ //no leading zero, so start from 1
+			for(int j=1;j<10;j++){ //no leading zero, so start from 1
 				steppingNum(s,e,i,j);
 			}
 		}
 	}
 	private void steppingNum( int s, int e, int length, int num){
-		if(length==1) {
+		if(length==1) {// because num already has one digit
 			if(s<=num && num<=e)
 				System.out.println(num);
 			return;

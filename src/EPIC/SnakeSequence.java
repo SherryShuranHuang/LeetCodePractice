@@ -1,7 +1,9 @@
 package EPIC;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /*
 Snake Sequence
@@ -15,66 +17,76 @@ For example,
 In this grid, (3, 2, 1, 0, 1) is a snake sequence. 
 Given a grid, find the longest snake sequences and their lengths 
 (so there can be multiple snake sequences with the maximum length).
-*/
+ */
 public class SnakeSequence {
 	public static void main(String[] args){
-		int[][] mat = new int[][]{{4,3,2, 1,0},
-								 {-9,7,3,-1,2},
-								  {1,5,2, 0,9}};
-		List<List<Integer>> res = findSnake(mat);
-		System.out.println(res);
-		System.out.println("The maximum length of snake sequences is: "+res.get(0).size());
+		int[][] mat = new int[][]{{3,3,2, 1,0},
+				{-9,7,3,-1,2},
+				{1,5,2, 0,9}};
+		findSnake(mat);
 	}
 
-
-        public static List<List<Integer>> findSnake(int[][] mat){
-        	List<List<Integer>> res = new ArrayList<List<Integer>>();
-                int max=0;
-                int count=0;
-                List<Integer> path = null;
-                for(int ii=0;ii<mat.length;ii++){
-                        for(int jj=0;jj<mat[0].length;jj++){
-                        		path= new ArrayList<Integer>();
-                                max=helper(mat, res,path,ii, jj,1,count,max);
-                                path= new ArrayList<Integer>();
-                                max=helper(mat,res,path,ii,jj,2,count, max);
-                        }
+	/**
+	 * Using DP to find the max length and then used length map to back track all the sequences
+	 * @param board
+	 */
+    public static void findSnake(int[][] board){
+        int m = board.length, n = board[0].length;
+        int[][] map = new int[m][n];
+        int max = 1;
+        Set<Integer[]> maxPoints = new HashSet<Integer[]>();
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                map[i][j] = 1;
+            }
+        }
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(i>0 && Math.abs(board[i][j]-board[i-1][j])==1){
+                    map[i][j] = Math.max(map[i][j],map[i-1][j]+1);
                 }
-                return res;
+                if(j>0 && Math.abs(board[i][j-1]-board[i][j])==1){
+                    map[i][j] = Math.max(map[i][j],map[i][j-1]+1);
+                }
+                if(map[i][j] > max){
+                	maxPoints.clear();
+                	Integer[] point = {i,j};
+                    maxPoints.add(point);   // store the points with maximum length
+                }
+                else if(map[i][j] == max){
+                	Integer[] point = {i,j};
+                    maxPoints.add(point);   // store the points with maximum length
+                }
+                max = Math.max(max,map[i][j]);
+            }
+        }
+        //find all the sequences
+        StringBuilder sb = new StringBuilder();
+        List<String> res = new ArrayList<String>();
+        for(Integer[] point: maxPoints){
+        	sb = new StringBuilder();
+        	sb.append(board[point[0]][point[1]]);
+            trace(res, board, point[0], point[1], max-1, sb);
+        }
+        System.out.println(res);
+        System.out.println(max);
+    }
+
+    public static void trace(List<String> res, int[][] board, int x, int y, int len, StringBuilder sb){
+        if(len==0){
+            res.add(sb.reverse().toString());
+            return;
         }
         
-        public static int helper(int[][] mat, List<List<Integer>> res, List<Integer> path, int r, int c, int type, int count, int max){
-                int rows = mat.length-1;
-                int cols = mat[0].length-1;
-                path.add(mat[r][c]);
-          
-                if((r==rows&&type==1)||(c==cols&&type==2)){
-                        if(count==max){             
-                                res.add(new ArrayList(path));
-                        }else if(count>max){
-                                max=count;
-                                res.clear();                             
-                                res.add(new ArrayList(path));
-                        }
-                        return max;
-                }
-                if(type==1){//go to below
-                        if(Math.abs(mat[r][c]-mat[r+1][c])!=1) return max;
-                        else{
-                                max=helper(mat, res, path, r+1, c, 1, count+1, max);
-                                path.remove(path.size()-1);
-                                max=helper(mat, res, path, r+1, c, 2, count+1, max);
-                                path.remove(path.size()-1);
-                        }
-                }else if(type==2){//go to right
-                        if(Math.abs(mat[r][c]-mat[r][c+1])!=1) return max;
-                        else{
-                                max=helper(mat, res, path, r, c+1, 1, count+1, max);
-                                path.remove(path.size()-1);
-                                max=helper(mat, res, path, r, c+1, 2, count+1, max);
-                                path.remove(path.size()-1);
-                        }
-                }
-                return max;
+        if(y>=1 && Math.abs(board[x][y-1]-board[x][y]) == 1){ //leftward
+            sb.append(board[x][y-1]);
+            trace(res, board, x, y-1, len-1, new StringBuilder(sb)); //should always pass a new sb object
+            sb.deleteCharAt(sb.length()-1);
         }
+        if(x>=1 && Math.abs(board[x-1][y]-board[x][y]) == 1){//upward
+            sb.append(board[x-1][y]);
+            trace(res, board, x-1, y, len-1, new StringBuilder(sb));
+            sb.deleteCharAt(sb.length()-1);
+        }
+    }
 }

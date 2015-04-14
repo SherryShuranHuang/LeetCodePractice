@@ -21,7 +21,7 @@ public class SeedNumber {
 			seeds.add(num);
 			return seeds;
 		}
-		for(int i=(int)Math.sqrt(num);i<=num/2;i++){
+		for(int i=(int)Math.sqrt(num);i<=num;i++){
 			if(num%i==0){
 				int temp = i;
 				int res = i;

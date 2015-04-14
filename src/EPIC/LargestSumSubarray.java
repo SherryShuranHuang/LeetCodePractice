@@ -14,7 +14,7 @@ public class LargestSumSubarray {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] array = {
-				-1,-1,-10,6,-10
+				-2,-2,-3
 				//-2, 1, -3, 4, -1, 2, 1, -5, 4
 			};
 		int[] res= largestSubarray(array);

@@ -9,6 +9,8 @@ on the board, write the program to count the longest length that chess could go.
 */
 
 public class JumpChess {
+	//grid of size N*N which can have values 0,1,2
+	//assume that the only way the chess can jump is to jump across opponent player
 	private static int[][] board = {
 		{0, 1, 2, 0, 0},
 		{0, 0, 0, 2, 0},
@@ -20,12 +22,17 @@ public class JumpChess {
 	
 	public static void main(String[] args) {
 		System.out.println(logestPath(0,1));
+		for(int ii=0;ii<len.length;ii++){
+			for(int jj=0;jj<len[0].length;jj++){
+				System.out.print(len[ii][jj]);
+			}
+			System.out.println();
+		}
 	}
 	
 	public static int logestPath(int row, int col){
 		if(row<0||row>board.length-1||col<0||col>board[0].length-1) return 0;
-		// grid of size N*N which can have values 0,1,2
-		//assume that the only way the chess can jump is to jump across opponent player
+
 		int me = board[row][col];
 		int oppo = me==1?2:1;
 		boolean[][] jumped = new boolean[5][5];
@@ -36,9 +43,9 @@ public class JumpChess {
 		if (i < 0 || i >= board.length || j < 0 || j >=board[0].length) {
 			return 0;
 		}
-//		if (len[i][j] > 0) {
-//			return len[i][j];
-//		}
+		if (len[i][j] > 0) {  //reduce the redundancy steps
+			return len[i][j];
+		}
 		// left
 		int leftJump = 0;
 		if (j - 2 >= 0 
@@ -75,9 +82,9 @@ public class JumpChess {
 			jumped[i + 2][j] = false;
 			
 		}
-//		len[i][j] = Math.max(Math.max(leftJump, rightJump), Math.max(upJump, botJump));
-//		return len[i][j];
-		return Math.max(Math.max(leftJump, rightJump), Math.max(upJump, botJump));
+		len[i][j] = Math.max(Math.max(leftJump, rightJump), Math.max(upJump, botJump));// store the value
+		return len[i][j];
+		//return Math.max(Math.max(leftJump, rightJump), Math.max(upJump, botJump));
 	}
 	
 	

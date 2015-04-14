@@ -12,7 +12,7 @@ public class SwappingString {
 		String s1 = "TEHUNOOL";
 		String s2 = "ONLEHTUO";
 		String s3 = "abcde";
-		String s4 = "edcbf";
+		String s4 = "edcba";
 		
 //		if (transpose(s1, s2)) {
 //			System.out.println("Yah!");
@@ -44,12 +44,12 @@ public class SwappingString {
 					stra1[j] = stra1[j+1];
 					stra1[j+1] = temp;
 					count++;
-					
-					if(count==stra1.length*(stra1.length-1))
-						//说明两层循环了一遍s1都没有找到s2里面的字符
-						return false;
-				}
+					System.out.println(new String(stra1));// print the transposing process
+				}			
 				
+				if(count==stra1.length*(stra1.length-1))
+					//说明两层循环了一遍s1都没有找到s2里面的字符
+					return false;
 			}
 		}
 		return true;

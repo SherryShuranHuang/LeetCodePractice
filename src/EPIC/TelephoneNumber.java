@@ -17,6 +17,7 @@ public class TelephoneNumber {
 
 		printValidPhoneNum(len,"");
 	}
+	
 	private static void printValidPhoneNum(int len, String item){
 		if(len==0){
 			System.out.println(item);

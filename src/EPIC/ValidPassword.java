@@ -32,7 +32,7 @@ public class ValidPassword {
 					if(faultKey!=expected.charAt(j))
 						return false;
 				}
-				i--;
+				i--; //----!
 			}
 				
 		}

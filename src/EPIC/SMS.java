@@ -30,7 +30,7 @@ public class SMS {
 
 	public static String msg(String str){
 		if(str==null||str.length()==0) return "";
-		int count = 0;
+		int count;
 		StringBuilder res = new StringBuilder();
 		
 		for(int i=0;i<str.length();i++){

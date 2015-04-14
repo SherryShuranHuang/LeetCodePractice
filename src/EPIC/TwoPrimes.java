@@ -21,10 +21,10 @@ public class TwoPrimes {
 		//test.printPrimePair(658);
 	}
 	public void isValid(int num){
-//		if(num%2!=0){
-//			System.out.println("Not an even number");
-//			return;
-//		}
+		if(num%2!=0){
+			System.out.println("Not an even number");
+			return;
+		}
 		for(int i=2;i<=num/2;i++){// we only need to go through the former half
 			if(isPrime(i)&&isPrime(num-i)){
 				System.out.println("For even number " + num + ", we have "

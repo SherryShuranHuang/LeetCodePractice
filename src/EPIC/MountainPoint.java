@@ -31,7 +31,7 @@ public class MountainPoint {
 						&& matrix[i][j] > matrix[i + 1][j]
 						&& matrix[i][j] > matrix[i + 1][j + 1]) {
 					System.out.println("(" + i + "," + j + ")");
-//					j++; // skip the next column
+					j++; // skip the next column
 				}
 			}
 		}

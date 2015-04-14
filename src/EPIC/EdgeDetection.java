@@ -42,9 +42,9 @@ public class EdgeDetection {
 		int numRows = image.length / width;
 		int xMin, xMax, yMin, yMax, index, value;
 		for (int row = 0; row < numRows; row++) {
-			int rowCount = row * width;
+			//int rowCount = row * width;
 			for (int col = 0; col < width; col++) {
-				index = rowCount + col;
+				index = row * width + col;
 				value = image[index];
 				xMin = (col == 0) ? 0 : col - 1;
 				xMax = (col == width - 1) ? col : col + 1;

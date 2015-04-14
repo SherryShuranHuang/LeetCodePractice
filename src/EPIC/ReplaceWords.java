@@ -10,7 +10,7 @@ O/P "A per son ca n't wa lk in th is str eet"
 public class ReplaceWords {
 	
 	public static void main(String[] args){
-		System.out.println(replaceWords("A person can't walk in this street   "));
+		System.out.println(replaceWords("A person can't walk in thisa street   "));
 	}
 	public static String replaceWords(String str){
 		if(str==null||str.length()==0)

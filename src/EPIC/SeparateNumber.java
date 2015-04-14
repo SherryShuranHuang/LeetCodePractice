@@ -24,7 +24,7 @@ public class SeparateNumber {
 		return res.toString();
 	}
 	public static void doTest(){
-		String str =  new String("4678912356012356");
+		String str =  new String("46789123560123456");
 		System.out.println(separateTheNumber(str));
 	}
 }

@@ -13,7 +13,6 @@ of coins required to make change for a given sum
 */
 public class CoinChange {
 
-	
 	public static void main(String[] args) {
 		doTest();
 	}
@@ -21,9 +20,7 @@ public class CoinChange {
 		double[] coins = {5.0, 1.0, 0.25, 0.1, 0.05, 0.01};
 		double paid = 20;
 		double cost = 10.5;
-		List<Double> res = new ArrayList<Double>();
-		res = coinChange(coins, paid , cost);
-		System.out.println(res);
+		System.out.println(coinChange(coins, paid , cost));
 	}
 	public static List<Double> coinChange(double[] coins, double paid, double cost){
 		List<Double> res = new ArrayList<Double>();

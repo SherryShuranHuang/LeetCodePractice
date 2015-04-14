@@ -22,9 +22,9 @@ class Calendar {
 	public static int[] days = {0,31,28,31,30,31,30,31,31,30,31,30,31};
 	
 	public static void main(String[] args){
-		//findWeek(2,27,2016,3);   // solutionB
-		String dt = "04/13/2015";  //solutionA
-		printWeek(dt);
+		findWeek(2,27,2016,3);   // solutionB
+		//String dt = "04/13/2015";  //solutionA
+		//printWeek(dt);
 	}
 	/**
 	 * solutionA, use library to achieve
@@ -59,19 +59,14 @@ class Calendar {
 	 */
 	public static void findWeek(int month, int day, int year, int whichDay){
 		for(int i=whichDay;i>0;i--){
-			if(day==1){
-				if(month==1){
+			day--;
+			if(day==0){
+				month--;			
+				if(month==0){
 					year--;
 					month=12;
-					day = numOfDaysInMonthAndYear(month,year);
-					
-				}else{
-					month--;
-					day = numOfDaysInMonthAndYear(month,year);
 				}
-			}
-			else{
-				day--;
+				day = numOfDaysInMonthAndYear(month,year);
 			}
 		}
 		
@@ -95,7 +90,7 @@ class Calendar {
 		else return days[month];
 	}
 	private static boolean isLeapYear(int year){
-		return (year%4==0); 
+		return (year%400==0||(year%100!=0 && year%4==0)); 
 	}
 	public static void printDay(int month, int day, int year, int whichDay) {
 		String d = new String();

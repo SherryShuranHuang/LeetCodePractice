@@ -10,7 +10,7 @@ Given the start and an ending integer as user input, generate all integers with 
 */
 public class AdditiveSequence {
 	public static void main(String[] args){
-		List<Integer> res = findAdditiveSequence(21,50);
+		List<Integer> res = findAdditiveSequence(1,50);
 		System.out.println(res);
 	}
 	public static List<Integer> findAdditiveSequence(int start, int end){
@@ -21,17 +21,12 @@ public class AdditiveSequence {
 		int f2 =2;
 		int f3= f1+f2;
 		
-//		if(f1==start)
-//			res.add(f1);
-		
-		while(f2<start){
-			f1=f2;
-			f2=f3;
-			f3=f1+f2;
-		}
+		if(f1==start)
+			res.add(f1);
 		
 		while(f2<=end){
-			res.add(f2);
+			if(f2>=start)
+				res.add(f2);
 			f1 = f2;
 			f2 = f3;
 			f3 = f1+f2;

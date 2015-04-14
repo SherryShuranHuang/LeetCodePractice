@@ -13,12 +13,12 @@ an array C=[7, 8, 1, 0].Remember that your machine can¡¯t hand numbers larger th
 public class SubtractionOf2Array {
 
 	public static void main(String[] args){
-		int[] A = { 2,1, 2, 3, 4, 5};
+		int[] A = { 1, 2, 3, 4, 5};
 		int[] B = {4, 5, 3, 5};
 		System.out.println(sub2Arraies(A, B));
 	}
 	//Assumption:  A>B, A.length>=B.length; 
-	public static List<Integer> sub2Arraies(int[] A, int[] B){// will there be negative?
+	public static List<Integer> sub2Arraies(int[] A, int[] B){
 		if(A==null || B==null) return null;
 		List<Integer> res = new ArrayList<Integer>();
 		int p1 = A.length-1;

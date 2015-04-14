@@ -37,14 +37,14 @@ public class SecurityKeypad {
 		for(int i=0;i<expected.length();i++){
 			if(expected.charAt(i)!=actual.charAt(i)){
 				if ((expected.charAt(i) == '1' && (actual.charAt(i) == '2' || actual.charAt(i) == '4'))
-						|| (expected.charAt(i) == '2' && (actual.charAt(i) == '1' || actual.charAt(i) == '3' || actual.charAt(i) == '5'))
-						|| (expected.charAt(i) == '3' && (actual.charAt(i) == '2' || actual.charAt(i) == '6'))
-						|| (expected.charAt(i) == '4' && (actual.charAt(i) == '1' || actual.charAt(i) == '5' || actual.charAt(i) == '7'))
-						|| (expected.charAt(i) == '5' && (actual.charAt(i) == '4' || actual.charAt(i) == '2' || actual.charAt(i) == '6' || actual.charAt(i) == '8'))
-						|| (expected.charAt(i) == '6' && (actual.charAt(i) == '3' || actual.charAt(i) == '5' || actual.charAt(i) == '9'))
-						|| (expected.charAt(i) == '7' && (actual.charAt(i) == '4' || actual.charAt(i) == '8'))
-						|| (expected.charAt(i) == '8' && (actual.charAt(i) == '7' || actual.charAt(i) == '5' || actual.charAt(i) == '9'))
-						|| (expected.charAt(i) == '9' && (actual.charAt(i) == '8' || actual.charAt(i) == '6'))) {
+				|| (expected.charAt(i) == '2' && (actual.charAt(i) == '1' || actual.charAt(i) == '3' || actual.charAt(i) == '5'))
+				|| (expected.charAt(i) == '3' && (actual.charAt(i) == '2' || actual.charAt(i) == '6'))
+				|| (expected.charAt(i) == '4' && (actual.charAt(i) == '1' || actual.charAt(i) == '5' || actual.charAt(i) == '7'))
+				|| (expected.charAt(i) == '5' && (actual.charAt(i) == '4' || actual.charAt(i) == '2' || actual.charAt(i) == '6' || actual.charAt(i) == '8'))
+				|| (expected.charAt(i) == '6' && (actual.charAt(i) == '3' || actual.charAt(i) == '5' || actual.charAt(i) == '9'))
+				|| (expected.charAt(i) == '7' && (actual.charAt(i) == '4' || actual.charAt(i) == '8'))
+				|| (expected.charAt(i) == '8' && (actual.charAt(i) == '7' || actual.charAt(i) == '5' || actual.charAt(i) == '9'))
+				|| (expected.charAt(i) == '9' && (actual.charAt(i) == '8' || actual.charAt(i) == '6'))) {
 					continue;
 				} else {
 					return false;

@@ -26,7 +26,7 @@ public class SpiralMatrix {
 		if(mat==null||mat[0].length==0) return;
 		int levelnum = mat.length/2;
 		for(int level=0;level<levelnum;level++){
-			for(int i=mat[0].length-level-1;i>level;i--)
+			for(int i=mat[0].length-level-1;i>level;i--)//小心不要角上的字符算了两次
 				System.out.print(mat[level][i]);
 			
 			for(int i=level;i<mat.length-level-1;i++)

@@ -40,13 +40,12 @@ public class BullandCows {
 		for(int i=0;i<guess.length();i++){
 			if(map.containsKey(guess.charAt(i)) && map.get(guess.charAt(i))>0){
 				if(guess.charAt(i)==ans.charAt(i)){
-					bulls++;
-					map.put(guess.charAt(i),map.get(guess.charAt(i))-1);
+					bulls++;	
 				}
 				else{
 					cows++;
-					map.put(guess.charAt(i),map.get(guess.charAt(i))-1);
 				}
+				map.put(guess.charAt(i),map.get(guess.charAt(i))-1);
 			}
 		}
 		System.out.println("Bulls: " + bulls + ", cows: " + cows);
